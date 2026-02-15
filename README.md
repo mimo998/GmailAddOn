@@ -133,7 +133,7 @@ Real-time URL reputation checking:
 - Clearable by user
 
 
-## 📊 Scoring Logic
+## Scoring Logic
 
 ### Signal Categories & Weights
 
@@ -159,4 +159,23 @@ Real-time URL reputation checking:
 | | **Clean** | **-25** |
 | **AI Analysis** | Based on LLM assessment | +0 to +40 |
 | **Whitelist** | Trusted sender (no scam content) | **×0.5** |
+
+## Limitations
+### Technical Limitations
+
+**No real-time link following**: URLs are checked by pattern/reputation, not actually visited
+**Attachment content not scanned**: Only file type/name analysis, no actual malware scanning
+**Rate limits**: Free API tiers have request limits (may cause "AI Disabled" or "VT Disabled" status)
+**LLM availability**: Free models may be temporarily unavailable during peak times
+
+### Detection Limitations
+
+**Sophisticated phishing**: Well-crafted spear phishing may evade pattern detection
+**Image-based attacks**: Text embedded in images is not analyzed
+**Encrypted attachments**: Cannot inspect password-protected files
+
+
+### Platform Limitations
+
+Gmail only.
 
