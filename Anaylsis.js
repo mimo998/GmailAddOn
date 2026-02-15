@@ -10,7 +10,7 @@ function analyzeEmail(emailData) {
   var signals = [];
   var totalScore = 0;
   var vtReduction = 0;  // Track VT reduction separately
-  
+  var isTrusted = isWhitelisted(emailData.senderEmail, emailData.senderDomain); // White list
   // 1. Check sender against blacklist
   var blacklistResult = checkBlacklist(emailData.senderEmail, emailData.senderDomain);
   if (blacklistResult.score > 0) {
@@ -89,7 +89,20 @@ function analyzeEmail(emailData) {
   
   // THEN apply VirusTotal reduction (so clean URLs can reduce from 100 to 75)
   totalScore = totalScore + vtReduction;
-  
+
+  if (isTrusted) {
+    // Cut the score in half
+    totalScore = Math.round(totalScore / 2);
+    
+    // Add a visual signal so the user knows WHY the score is lower
+    signals.push({
+      name: "Trusted Sender",
+      description: "Sender is on your whitelist. Score reduced by 50%.",
+      score: 0, // We already adjusted the totalScore manually above
+      severity: "good"
+    });
+  }
+
   // Ensure minimum is 0
   totalScore = Math.max(0, totalScore);
   

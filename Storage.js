@@ -39,7 +39,7 @@ var BUILTIN_TRUSTED_DOMAINS = [
   'bezeq.co.il', 'partner.co.il', 'cellcom.co.il', 'hot.net.il',
   'super-pharm.co.il', 'shufersal.co.il', 'gov.il',
   // Universities
-  'tau.ac.il', 'huji.ac.il', 'bgu.ac.il', 'technion.ac.il', 'weizmann.ac.il'
+  'tau.ac.il', 'huji.ac.il', 'technion.ac.il', 'weizmann.ac.il'
 ];
 
 /**
